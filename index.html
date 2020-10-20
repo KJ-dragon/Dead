@@ -153,7 +153,7 @@
 					        const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
 					        // Prediction 2: run input through teachable machine classification model
 					        const prediction = await model.predict(posenetOutput);
-							if(prediction[0].probability.toFixed(2) > 0.70) {
+							if(prediction[0].probability.toFixed(2) == 1.00) {
 								if(status == "dead"){
 									count++
 									success = "좋습니다!!"
@@ -163,9 +163,15 @@
 									}
 								}
 								status = "stand"
-							} else if(prediction[1].probability.toFixed(2) > 0.80){
+							} else if(prediction[1].probability.toFixed(2) == 1.00){
 								status = "dead"
 							} else if(prediction[2].probability.toFixed(2) == 1.00){
+								if(status == "squat" || status == "stand"){
+									fail = "똑바로 하세요."
+							
+								}
+								
+								$('#count').text(fail)
 								status = "bent"
 								
 							}
