@@ -27,7 +27,7 @@
     
     <script type="text/javascript">
 
-			
+				
     
     </script>
     
@@ -45,10 +45,8 @@
 		    border: 0;
     	}
 	#label-container{
-		font-size: 25px;
+		font-size: 25px;	
 	}
-	  
-	   
     </style>
 </head>
 <body>
@@ -59,8 +57,8 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/member/diary.do">일지</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://happy-kare-99d044.netlify.app/">AI트레이너</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/sss/diary/diary.do">일지</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost/sss/member/aimain.do">AI트레이너</a></li>
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">커뮤니티</a>
                         	
 							<!-- 	                       
@@ -71,11 +69,11 @@
                         	</form> 
 	                        -->
                         <div class="dropdown-menu">
-	                        <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardMain.do?cd_id=A106">자유게시판</a>
- 		                    <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardMain.do?cd_id=A102">영양게시판</a>
-	                        <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardMain.do?cd_id=A103">트레이닝 게시판</a>
-	                        <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardMain.do?cd_id=A105">몸짱게시판</a>                        
-	                        <a class="dropdown-item" href="<%=request.getContextPath()%>/board/boardMain.do?cd_id=A104">Q&A 게시판</a>                        
+	                        <a class="dropdown-item" href="http://localhost/sss/board/boardMain.do?cd_id=A106">자유게시판</a>
+ 		                    <a class="dropdown-item" href="http://localhost/sss/board/boardMain.do?cd_id=A102">영양게시판</a>
+	                        <a class="dropdown-item" href="http://localhost/sss/board/boardMain.do?cd_id=A103">트레이닝 게시판</a>
+	                        <a class="dropdown-item" href="http://localhost/sss/board/boardMain.do?cd_id=A105">몸짱게시판</a>                        
+	                        <a class="dropdown-item" href="http://localhost/sss/board/boardMain.do?cd_id=A104">Q&A 게시판</a>                        
 	                    </div>
 							                        
                     </li>
@@ -90,10 +88,10 @@
         <div class="container">
             <div class="intro">
             	<div class="text-center">
-					<h3>DeadLift Pose Model</h3>
+					<h3>데드리프트 포즈 모델</h3>
 					<input class="form-control" id="reps" type="text" name="reps" placeholder="반복 횟수를 입력하세요. ex) 10" required>
 <!-- 					<button type="button" onclick="init()">Start</button> -->
-					<button class="btn btn-primary" type="button" style="margin-top: 010px;" onclick="init()">Start</button>
+					<button class="btn btn-primary" type="button" style="margin-top: 010px;" onclick="init()">시작</button>
 					<div><canvas id="canvas" style="width: 500px; height: 500px;"></canvas></div>
 					<div id="label-container"></div><br>
 					<div class="text-center"><h4 id="count">Count : </h4><br><h3 id="success"></h3></div>
@@ -157,7 +155,7 @@
 								if(status == "dead"){
 									count++
 									success = "좋습니다!!"
-									$('#count').text("Count : " + count)
+									$('#count').text("카운트 : " + count)
 									if(count == reps) {
 										$('#success').text("목표 횟수를 달성했습니다!!")
 									}
@@ -166,7 +164,7 @@
 							} else if(prediction[1].probability.toFixed(2) == 1.00){
 								status = "dead"
 							} else if(prediction[2].probability.toFixed(2) == 1.00){
-								if(status == "squat" || status == "stand"){
+								if(status == "dead" || status == "stand"){
 									fail = "똑바로 하세요."
 							
 								}
